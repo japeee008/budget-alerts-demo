@@ -11,6 +11,3 @@ class BudgetAlertAdmin(admin.ModelAdmin):
     list_display = ("category", "amount_limit", "threshold_percent", "active", "user", "created_at")
     list_filter = ("active", "threshold_percent")
     search_fields = ("category__name", "user__username")
-
-
-# Register your models here.

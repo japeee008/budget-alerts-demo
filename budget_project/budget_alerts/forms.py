@@ -4,8 +4,10 @@ from .models import BudgetAlert
 class BudgetAlertForm(forms.ModelForm):
     class Meta:
         model = BudgetAlert
-        fields = ("amount_limit","category","threshold_percent",
-                  "notify_dashboard","notify_email","notify_push","active")
+        fields = (
+            "amount_limit", "category", "threshold_percent",
+            "notify_dashboard", "notify_email", "notify_push", "active"
+        )
         widgets = {
             "threshold_percent": forms.NumberInput(attrs={"type": "range", "min": 10, "max": 100, "step": 5}),
         }

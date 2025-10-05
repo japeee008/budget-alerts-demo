@@ -19,9 +19,10 @@ class Category(models.Model):
 class BudgetAlert(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="budget_alerts")
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="alerts")
-    amount_limit = models.DecimalField(max_digits=12, decimal_places=2,
-                                       validators=[MinValueValidator(Decimal("0.01"))])
-    # store as percentage 10–100
+    amount_limit = models.DecimalField(
+        max_digits=12, decimal_places=2,
+        validators=[MinValueValidator(Decimal("0.01"))]
+    )
     threshold_percent = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(10), MaxValueValidator(100)],
         default=80
@@ -39,6 +40,3 @@ class BudgetAlert(models.Model):
 
     def __str__(self):
         return f"{self.category} • ₱{self.amount_limit} • {self.threshold_percent}%"
-
-
-# Create your models here.

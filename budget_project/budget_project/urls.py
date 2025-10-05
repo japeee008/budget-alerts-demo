@@ -18,12 +18,12 @@ from django.shortcuts import redirect
 from django.contrib import admin
 from django.urls import path, include
 
+# Redirect root URL to the /budget-alerts/ page.
 def redirect_to_alerts(request):
-    return redirect('/budget-alerts/')
-
+    return redirect('/budget-alerts/')  # This will just take you to the budget-alerts page directly.
 
 urlpatterns = [
-    path('', redirect_to_alerts),
+    path('', redirect_to_alerts),  # Redirect from root to /budget-alerts/
     path('admin/', admin.site.urls),
     path('budget-alerts/', include('budget_alerts.urls')),
 ]
